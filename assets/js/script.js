@@ -34,7 +34,23 @@ function addUser(name) {
   }
   newUser.avatarURL = genUserAvatar(name + newUser.seed);
   users.push(newUser);
+  saveUsers();
+
   return users.length - 1;
+}
+
+/* Saves all users to local storage */
+function saveUsers() {
+  localStorage.setItem("trivia-users", JSON.stringify(users));
+}
+
+/* Loads users from local storage */
+function loadUsers() {
+  var loadedUsers = JSON.parse(localStorage.getItem("trivia-users"));
+
+  if (loadedUsers) {
+    users = loadedUsers;
+  }
 }
 
 /*get the trivial url based on selections from user */
@@ -57,3 +73,6 @@ function getTriviaUrl() {
   }
   return triviaUrl;
 }
+
+/* Initialization items */
+loadUsers();
