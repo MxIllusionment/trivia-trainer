@@ -1,4 +1,5 @@
 var bots = [];
+var users = [];
 var triviaUrl = ""
 
 /* Returns a link to a user avatar image */
@@ -20,6 +21,20 @@ function initializeBots(count) {
     };
     newBot.url = genBotAvatar(newBot.seed);
     bots.push(newBot);
+  }
+}
+
+/* Creates a new user, adds it to the list of users, and returns the
+   index of the new user */
+function addUser(name) {
+  var newUser = {
+    name: name,
+    seed: Math.floor(Math.random() * 1000000) + 1,
+    history: []
+  }
+  newUser.avatarURL = genUserAvatar(name + newUser.seed);
+  users.push(newUser);
+  return users.length - 1;
 }
 
 /*get the trivial url based on selections from user */
