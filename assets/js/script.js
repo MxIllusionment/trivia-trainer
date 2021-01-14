@@ -20,8 +20,8 @@ function initializeBots(count) {
     };
     newBot.url = genBotAvatar(newBot.seed);
     bots.push(newBot);
+  }
 }
-
 /*get the trivial url based on selections from user */
 function getTriviaUrl() {
   var difficulty = $("#difficulty").val()
@@ -42,3 +42,27 @@ function getTriviaUrl() {
   }
   return triviaUrl;
 }
+
+/*shuffles an array put into it */
+function shuffle(array) {
+  var currentIndex = array.length, tempValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    tempValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = tempValue;
+  }
+  return array;
+}
+
+
+/*for when we click to play game, this gets the url */
+$("#play-game").on("click", function (event) {
+
+  var triviaUrl = getTriviaUrl();
+  $.ajax({
+    url: triviaUrl,
+    method: "GET"
+  }).then();
+});
