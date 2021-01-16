@@ -81,12 +81,9 @@ function botHandler(botIdx) {
   /* Check if bot will answer */
   if (!bots[botIdx].answered && (Math.random() < answerChance)) {
     var botAnswer;
-    var answerArray;
+    var answerArray = allQuestions[currentQuestionIndex].answers;
 
     bots[botIdx].answered = true;
-
-    /* TODO: Get array of answers for current question */
-    answerArray = ["A", "B", "C", "D"]; // TEMP
 
     /* Randomly select an answer */
     botAnswer = answerArray[Math.floor(Math.random() * answerArray.length)];
