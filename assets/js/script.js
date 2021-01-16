@@ -172,9 +172,10 @@ function startGame(response) {
     allQuestions.push(newQuestion)
   }
   // console.log(allQuestions)
-  //render question
+
   initializeBots(4);
   renderQuestion();
+  startBotEngine();
 }
 
 function renderQuestion() {
