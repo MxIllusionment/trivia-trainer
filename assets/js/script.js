@@ -4,6 +4,12 @@ var triviaUrl = ""
 var currentQuestionIndex = 0;
 var allQuestions = [];
 
+var currentGameData = {
+  difficulty: "",
+  category: "",
+  questions: -1,
+  score: -1
+};
 
 /* Returns a link to a user avatar image */
 function genUserAvatar(seed) {
@@ -151,6 +157,8 @@ $("#play-game").on("click", function (event) {
 
   // var triviaUrl = getTriviaUrl();
   var triviaUrl = "https://opentdb.com/api.php?amount=10&type=multiple"
+
+  setCurrentGameData();
   $.ajax({
     url: triviaUrl,
     method: "GET"
@@ -197,6 +205,27 @@ function putAnswersArray(response, i) {
   return CurrentAnswerArray;
 }
 
+/* Sets the global current game data */
+function setCurrentGameData() {
+  currentGameData.difficulty = $("#difficulty").val();
+  currentGameData.category = $("#category").val();
+  currentGameData.questions = parseInt($("#questionAmount").val());
+  currentGameData.score = 0;
+}
+
+/* Saves game data to user history */
+function saveGameHistory(userIdx) {
+  var newHistory = {
+    date: dayjs().format("MM/DD/YYYY"),
+    time: dayjs().format("h:mmA"),
+    difficulty: currentGameData.difficulty,
+    category: currentGameData.category,
+    score: currentGameData.score + "/" + currentGameData.questions
+  };
+
+  users[userIdx].history.push(newHistory);
+  saveUsers();
+}
 
 /* Initialization items */
 loadUsers();
