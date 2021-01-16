@@ -106,7 +106,7 @@ function startBotEngine() {
 /* Stops bot engine for all bots */
 function stopBotEngine() {
   for (var i = 0; i < bots.length; i++) {
-    clearInterval(bots[i]);
+    clearInterval(bots[i].interval);
   }
 }
 
@@ -217,6 +217,7 @@ function processBotAnswer(answer) {
 $("#next-button").on("click", function () {
   $("#correctAnswerDiv").addClass("hidden");
   $("#wrongAnswerDiv").addClass("hidden");
+  $("#botAnswerDiv").addClass("hidden");
   currentQuestionIndex++;
   $("#questionDisplay").removeClass("hidden")
   $("#answerDisplay").removeClass("hidden")
