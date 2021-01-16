@@ -203,6 +203,7 @@ function processAnswer(answer) {
     $("#wrongAnswerDiv").removeClass("hidden")
     $("#wrongAnswerDiv").html("Correct Answer: " + allQuestions[currentQuestionIndex].correctAnswer)
   }
+  finishQuestion();
 }
 
 /* Checks if a bot answer is correct and halts current question if it is*/
@@ -219,7 +220,10 @@ $("#next-button").on("click", function () {
   $("#correctAnswerDiv").addClass("hidden");
   $("#wrongAnswerDiv").addClass("hidden");
   currentQuestionIndex++;
+  $("#questionDisplay").removeClass("hidden")
+  $("#answerDisplay").removeClass("hidden")
   renderQuestion();
+  startBotEngine();
 })
 
 function displayQuestion(response) {
@@ -254,6 +258,13 @@ function saveGameHistory(userIdx) {
 
   users[userIdx].history.push(newHistory);
   saveUsers();
+}
+
+function finishQuestion() {
+  $("#questionDisplay").addClass("hidden")
+  $("#answerDisplay").addClass("hidden")
+  $("#next-button").removeClass("hidden")
+  stopBotEngine()
 }
 
 /* Initialization items */
