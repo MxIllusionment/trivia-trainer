@@ -206,8 +206,8 @@ function processAnswer(answer) {
 
 /* Checks if a bot answer is correct and halts current question if it is*/
 function processBotAnswer(answer) {
-  if (answer === newQuestion[currentQuestionIndex].correctAnswer) {
-    $("#botAnswerDiv").html("An opponent answered first: " + newQuestion[currentQuestionIndex].correctAnswer);
+  if (answer === allQuestions[currentQuestionIndex].correctAnswer) {
+    $("#botAnswerDiv").html("An opponent answered first: " + allQuestions[currentQuestionIndex].correctAnswer);
     $("#botAnswerDiv").removeClass("hidden");
     finishQuestion();
   }
