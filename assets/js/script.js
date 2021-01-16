@@ -173,8 +173,8 @@ function startGame(response) {
   }
   // console.log(allQuestions)
   //render question
-  renderQuestion()
-
+  initializeBots(4);
+  renderQuestion();
 }
 
 function renderQuestion() {
@@ -189,9 +189,6 @@ function renderQuestion() {
       processAnswer(allQuestions[currentQuestionIndex].answers[i])
     })
   }
-  //start bot function
-  initializeBots(4)
-
 }
 
 function processAnswer(answer) {
