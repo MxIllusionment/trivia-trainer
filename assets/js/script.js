@@ -20,7 +20,9 @@ function initializeBots(count) {
   bots = [];
   for (var i = 0; i < count; i++) {
     var newBot = {
-      seed: Math.floor(Math.random() * 1000000) + 1
+      seed: Math.floor(Math.random() * 1000000) + 1,
+      interval: null,
+      answered: false
     };
     newBot.url = genBotAvatar(newBot.seed);
     bots.push(newBot);
@@ -55,6 +57,61 @@ function loadUsers() {
     users = loadedUsers;
   }
 }
+
+/* TODO: Renders answer to front end */
+function renderAnswer(imgURL, answer) {
+  console.log("Render: ", imgURL, answer);
+}
+
+/* TODO: Checks if a bot answer is correct and moves the game forward */
+function processBotAnswer(answer) {
+  console.log("Process Bot Answer: ", answer);
+}
+
+/* Callback function to handle bot behavior at set interval */
+function botHandler(botIdx) {
+  var answerChance = 0.25; // Probability that bot will answer
+
+  /* Check if bot will answer */
+  if (!bots[botIdx].answered && (Math.random() < answerChance)) {
+    var botAnswer;
+    var answerArray;
+
+    bots[botIdx].answered = true;
+
+    /* TODO: Get array of answers for current question */
+    answerArray = ["A", "B", "C", "D"]; // TEMP
+
+    /* Randomly select an answer */
+    botAnswer = answerArray[Math.floor(Math.random() * answerArray.length)];
+
+    /* Render answer */
+    renderAnswer(bots[botIdx].url, botAnswer);
+
+    /* Process if answer is correct */
+    processBotAnswer(botAnswer);
+  }
+}
+
+/* Starts up the bot engine for all bots */
+function startBotEngine() {
+  var botTimer = 4000; // base ms timer for each bot
+
+  for (var i = 0; i < bots.length; i++) {
+    var timerRand = Math.floor(Math.random() * 1000);
+
+    bots[i].answered = false;
+    bots[i].interval = setInterval(botHandler, botTimer + timerRand, i);
+  }
+}
+
+/* Stops bot engine for all bots */
+function stopBotEngine() {
+  for (var i = 0; i < bots.length; i++) {
+    clearInterval(bots[i]);
+  }
+}
+
 /*get the trivial url based on selections from user */
 function getTriviaUrl() {
   var difficulty = $("#difficulty").val()
@@ -89,7 +146,6 @@ function shuffle(array) {
   return array;
 }
 
-
 /*for when we click to play game, this gets the url */
 $("#play-game").on("click", function (event) {
 
@@ -102,7 +158,6 @@ $("#play-game").on("click", function (event) {
 
 
 });
-
 
 /*Starts the game */
 function startGame(response) {
