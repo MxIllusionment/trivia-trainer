@@ -182,16 +182,36 @@ function startGame(response) {
   // console.log(allQuestions)
   //render question
 
-  //create array from answer choices
-
-  //shuffle array
-
+  $("#questionDisplay").html(newQuestion[currentQuestionIndex].question)
+  $("#answerDisplay").empty()
   //display answers
+  for (var i = 0; i < newQuestion[currentQuestionIndex].answers.length; i++) {
+    var answerBtn = $("<button>")
+    answerBtn.html(newQuestion[currentQuestionIndex].answers[i])
+    $("#answerDisplay").append(answerBtn)
+    answerBtn.on("click", function () {
+      processAnswer(newQuestion[currentQuestionIndex].answers[i])
+    })
+  }
+
 
   //start bot function
-
+  initializeBots(4)
 
 }
+
+function processAnswer(answer) {
+  if (answer === newQuestion[currentQuestionIndex].correctAnswer) {
+    score++;
+    $("#correctAnswerDiv").removeClass("hidden")
+  }
+  else {
+    $("#wrongAnswerDiv").removeClass("hidden")
+    $("#wrongAnswerDiv").html("Correct Answer: " + newQuestion[currentQuestionIndex].correctAnswer)
+  }
+}
+
+
 
 function displayQuestion(response) {
   $("#questionDiv").text(response.results[currentQuestionIndex].question)
