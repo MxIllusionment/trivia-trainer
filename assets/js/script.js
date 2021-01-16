@@ -69,11 +69,6 @@ function renderAnswer(imgURL, answer) {
   console.log("Render: ", imgURL, answer);
 }
 
-/* TODO: Checks if a bot answer is correct and moves the game forward */
-function processBotAnswer(answer) {
-  console.log("Process Bot Answer: ", answer);
-}
-
 /* Callback function to handle bot behavior at set interval */
 function botHandler(botIdx) {
   var answerChance = 0.25; // Probability that bot will answer
@@ -209,6 +204,16 @@ function processAnswer(answer) {
     $("#wrongAnswerDiv").html("Correct Answer: " + allQuestions[currentQuestionIndex].correctAnswer)
   }
 }
+
+/* Checks if a bot answer is correct and halts current question if it is*/
+function processBotAnswer(answer) {
+  if (answer === newQuestion[currentQuestionIndex].correctAnswer) {
+    $("#botAnswerDiv").html("An opponent answered first: " + newQuestion[currentQuestionIndex].correctAnswer);
+    $("#botAnswerDiv").removeClass("hidden");
+    finishQuestion();
+  }
+}
+
 
 $("#next-button").on("click", function () {
   $("#correctAnswerDiv").addClass("hidden");
