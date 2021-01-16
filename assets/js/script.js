@@ -175,8 +175,6 @@ function startGame(response) {
   //render question
   initializeBots(4);
   renderQuestion();
-  startBotEngine();
-
 }
 
 function renderQuestion() {
@@ -191,7 +189,6 @@ function renderQuestion() {
       processAnswer(allQuestions[currentQuestionIndex].answers[i])
     })
   }
-
 }
 
 function processAnswer(answer) {
