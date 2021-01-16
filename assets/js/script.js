@@ -152,8 +152,8 @@ function shuffle(array) {
 /*for when we click to play game, this gets the url */
 $("#play-game").on("click", function (event) {
 
-  // var triviaUrl = getTriviaUrl();
-  var triviaUrl = "https://opentdb.com/api.php?amount=10&type=multiple"
+  var triviaUrl = getTriviaUrl();
+  // var triviaUrl = "https://opentdb.com/api.php?amount=10&type=multiple"
 
   setCurrentGameData();
   $.ajax({
@@ -178,37 +178,44 @@ function startGame(response) {
   }
   // console.log(allQuestions)
   //render question
+  renderQuestion()
 
-  $("#questionDisplay").html(newQuestion[currentQuestionIndex].question)
+}
+
+function renderQuestion() {
+  $("#questionDisplay").html(allQuestions[currentQuestionIndex].question)
   $("#answerDisplay").empty()
   //display answers
-  for (var i = 0; i < newQuestion[currentQuestionIndex].answers.length; i++) {
+  for (var i = 0; i < allQuestions[currentQuestionIndex].answers.length; i++) {
     var answerBtn = $("<button>")
-    answerBtn.html(newQuestion[currentQuestionIndex].answers[i])
+    answerBtn.html(allQuestions[currentQuestionIndex].answers[i])
     $("#answerDisplay").append(answerBtn)
     answerBtn.on("click", function () {
-      processAnswer(newQuestion[currentQuestionIndex].answers[i])
+      processAnswer(allQuestions[currentQuestionIndex].answers[i])
     })
   }
-
-
   //start bot function
   initializeBots(4)
 
 }
 
 function processAnswer(answer) {
-  if (answer === newQuestion[currentQuestionIndex].correctAnswer) {
+  if (answer === allQuestions[currentQuestionIndex].correctAnswer) {
     score++;
     $("#correctAnswerDiv").removeClass("hidden")
   }
   else {
     $("#wrongAnswerDiv").removeClass("hidden")
-    $("#wrongAnswerDiv").html("Correct Answer: " + newQuestion[currentQuestionIndex].correctAnswer)
+    $("#wrongAnswerDiv").html("Correct Answer: " + allQuestions[currentQuestionIndex].correctAnswer)
   }
 }
 
-
+$("#next-button").on("click", function () {
+  $("#correctAnswerDiv").addClass("hidden");
+  $("#wrongAnswerDiv").addClass("hidden");
+  currentQuestionIndex++;
+  renderQuestion();
+})
 
 function displayQuestion(response) {
   $("#questionDiv").text(response.results[currentQuestionIndex].question)
