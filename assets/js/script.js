@@ -1,6 +1,9 @@
 var bots = [];
 var users = [];
 var triviaUrl = ""
+var currentQuestionIndex = 0;
+var allQuestions = [];
+
 
 /* Returns a link to a user avatar image */
 function genUserAvatar(seed) {
@@ -90,11 +93,55 @@ function shuffle(array) {
 /*for when we click to play game, this gets the url */
 $("#play-game").on("click", function (event) {
 
-  var triviaUrl = getTriviaUrl();
+  // var triviaUrl = getTriviaUrl();
+  var triviaUrl = "https://opentdb.com/api.php?amount=10&type=multiple"
   $.ajax({
     url: triviaUrl,
     method: "GET"
-  }).then();
+  }).then(startGame);
+
+
 });
+
+
+/*Starts the game */
+function startGame(response) {
+  // console.log(response)
+  //store required data to global
+  for (var i = 0; i < response.results.length; i++) {
+    var newQuestion = {
+      question: response.results[i].question,
+      answers: putAnswersArray(response, i),
+      correctAnswer: response.results[i].correct_answer
+    }
+    allQuestions.push(newQuestion)
+  }
+  // console.log(allQuestions)
+  //render question
+
+  //create array from answer choices
+
+  //shuffle array
+
+  //display answers
+
+  //start bot function
+
+
+}
+
+function displayQuestion(response) {
+  $("#questionDiv").text(response.results[currentQuestionIndex].question)
+}
+
+
+function putAnswersArray(response, i) {
+  var CurrentAnswerArray = response.results[i].incorrect_answers.concat(response.results[i].correct_answer)
+  // console.log(answerArray)
+  shuffle(CurrentAnswerArray);
+  return CurrentAnswerArray;
+}
+
+
 /* Initialization items */
 loadUsers();
