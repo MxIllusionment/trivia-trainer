@@ -106,7 +106,7 @@ function startBotEngine() {
 /* Stops bot engine for all bots */
 function stopBotEngine() {
   for (var i = 0; i < bots.length; i++) {
-    clearInterval(bots[i]);
+    clearInterval(bots[i].interval);
   }
 }
 
@@ -172,9 +172,10 @@ function startGame(response) {
     allQuestions.push(newQuestion)
   }
   // console.log(allQuestions)
-  //render question
+
   initializeBots(4);
   renderQuestion();
+  startBotEngine();
 }
 
 function renderQuestion() {
@@ -205,8 +206,8 @@ function processAnswer(answer) {
 
 /* Checks if a bot answer is correct and halts current question if it is*/
 function processBotAnswer(answer) {
-  if (answer === newQuestion[currentQuestionIndex].correctAnswer) {
-    $("#botAnswerDiv").html("An opponent answered first: " + newQuestion[currentQuestionIndex].correctAnswer);
+  if (answer === allQuestions[currentQuestionIndex].correctAnswer) {
+    $("#botAnswerDiv").html("An opponent answered first: " + allQuestions[currentQuestionIndex].correctAnswer);
     $("#botAnswerDiv").removeClass("hidden");
     finishQuestion();
   }
@@ -216,6 +217,7 @@ function processBotAnswer(answer) {
 $("#next-button").on("click", function () {
   $("#correctAnswerDiv").addClass("hidden");
   $("#wrongAnswerDiv").addClass("hidden");
+  $("#botAnswerDiv").addClass("hidden");
   currentQuestionIndex++;
   $("#questionDisplay").removeClass("hidden")
   $("#answerDisplay").removeClass("hidden")
