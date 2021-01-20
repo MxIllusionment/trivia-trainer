@@ -6,11 +6,21 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Trivia Trainer</title>
 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
     <body>
+        <header class="header"><h1>Trivia Trainer</h1></header>
+        
 
-
+        <div id="history" class="hide">
+            <div class="wrapper">
+                <h1>Last Players</h1>
+                <ol id="past_records"></ol>
+                <button id="clear">Clear</button>
+            </div>
+        </div>
+        
         <script src="assets/js/script.js"></script>
     </body>
 </html>
