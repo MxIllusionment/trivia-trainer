@@ -14,6 +14,7 @@ var currentGameData = {
   score: -1
 };
 
+
 var categoryData = [
   {
     category: "General Knowledge",
@@ -137,6 +138,14 @@ function openQuizPage() {
   $("#setup").addClass("hide");
   $("#quiz").removeClass("hide");
   $("#history").addClass("hide");
+}
+
+//Initialization and opening of game history page
+function openHistoryPage() {
+  $("#start").addClass("hide");
+  $("#setup").addClass("hide");
+  $("#quiz").addClass("hide");
+  $("#history").removeClass("hide");
 }
 
 /* Returns a link to a user avatar image */
@@ -459,6 +468,8 @@ function endGame() {
     $("#quiz").addClass("hide")
   })
 }
+
+
 
 
 /* Initialization items */
