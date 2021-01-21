@@ -114,6 +114,30 @@ var categoryData = [
 
 ]
 
+/* Initialization and opening of start/user select page */
+function openStartPage() {
+  renderUsers();
+  $("#start").removeClass("hide");
+  $("#setup").addClass("hide");
+  $("#quiz").addClass("hide");
+  $("#history").addClass("hide");
+}
+
+/* Initialization and opening of game setup page */
+function openSetupPage() {
+  $("#start").addClass("hide");
+  $("#setup").removeClass("hide");
+  $("#quiz").addClass("hide");
+  $("#history").addClass("hide");
+}
+
+/* Initialization and opening of quiz/game page */
+function openQuizPage() {
+  $("#start").addClass("hide");
+  $("#setup").addClass("hide");
+  $("#quiz").removeClass("hide");
+  $("#history").addClass("hide");
+}
 
 /* Returns a link to a user avatar image */
 function genUserAvatar(seed) {
@@ -137,6 +161,32 @@ function initializeBots(count) {
     newBot.url = genBotAvatar(newBot.seed);
     bots.push(newBot);
   }
+}
+
+/* On-click function for user in list being clicked */
+function clickUser() {
+  var userIdx = parseInt($(this).attr("data-index"));
+
+  currentUser = userIdx;
+
+  openSetupPage();
+}
+
+/* Renders list of users to front end */
+function renderUsers() {
+  $("#userListDiv").empty();
+  users.forEach(function (user, idx) {
+    var newDiv = $("<div>");
+    var newImg = $("<img>").attr("src", user.avatarURL);
+    var newSpan = $("<span>").html(user.name);
+
+    newImg.attr("data-index", idx);
+    newImg.click(clickUser);
+
+    newDiv.append(newImg);
+    newDiv.append(newSpan);
+    $("#userListDiv").append(newDiv);
+  });
 }
 
 /* Creates a new user, adds it to the list of users, and returns the
@@ -290,6 +340,7 @@ function startGame(response) {
 
   initializeBots(4);
   renderQuestion();
+  openQuizPage();
   startBotEngine();
 }
 
@@ -412,3 +463,4 @@ function endGame() {
 
 /* Initialization items */
 loadUsers();
+openStartPage();
