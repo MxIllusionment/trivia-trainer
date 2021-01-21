@@ -117,12 +117,12 @@ var categoryData = [
 
 /* Returns a link to a user avatar image */
 function genUserAvatar(seed) {
-  return "https://avatars.dicebear.com/api/gridy/" + seed + ".svg?colorful=1&deterministic=1";
+  return "https://avatars.dicebear.com/api/gridy/" + seed + ".svg?colorful=1&deterministic=1&w=100&h=100";
 }
 
 /* Returns a link to a bot avatar image */
 function genBotAvatar(seed) {
-  return "https://avatars.dicebear.com/api/bottts/" + seed + ".svg?colorful=1&mouthChance=50&sidesChance=50&topChance=50";
+  return "https://avatars.dicebear.com/api/bottts/" + seed + ".svg?colorful=1&mouthChance=50&sidesChance=50&topChance=50&w=100&h=100";
 }
 
 /* Initializes the bots list with a set number of new bots */
@@ -168,9 +168,14 @@ function loadUsers() {
   }
 }
 
-/* TODO: Renders answer to front end */
-function renderAnswer(imgURL, answer) {
-  console.log("Render: ", imgURL, answer);
+/* Renders bot answer to front end */
+function renderBotAnswer(imgURL, answer) {
+  var newBot = $("<div>");
+  var newImg = $("<img>").attr("src", imgURL);
+  var newSpan = $("<span>").html("answered '" + answer + "'");
+  newBot.append(newImg);
+  newBot.append(newSpan);
+  $("#botDiv").append(newBot);
 }
 
 /* Callback function to handle bot behavior at set interval */
@@ -191,7 +196,7 @@ function botHandler(botIdx) {
     availableAnswers.splice(answerIndex, 1);
 
     /* Render answer */
-    renderAnswer(bots[botIdx].url, botAnswer);
+    renderBotAnswer(bots[botIdx].url, botAnswer);
 
     /* Process if answer is correct */
     processBotAnswer(botAnswer);
@@ -203,6 +208,7 @@ function startBotEngine() {
   var botTimer = 4000; // base ms timer for each bot
 
   availableAnswers = allQuestions[currentQuestionIndex].answers;
+  $("#botDiv").empty();
   for (var i = 0; i < bots.length; i++) {
     var timerRand = Math.floor(Math.random() * 1000);
 
@@ -385,6 +391,10 @@ function finishQuestion() {
 function endGame() {
   //call savegamehistory
   saveGameHistory(currentUser)
+
+  // Clear bot display
+  $("botDiv").empty();
+
   //display game over screen with score
   var gameOverDisplay = $("#game-over")
   //display score on gameOverDisplay
