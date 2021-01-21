@@ -295,16 +295,17 @@ function renderQuestion() {
   for (var i = 0; i < allQuestions[currentQuestionIndex].answers.length; i++) {
     var answerBtn = $("<button>")
     answerBtn.html(allQuestions[currentQuestionIndex].answers[i])
+    answerBtn.attr("data-value", allQuestions[currentQuestionIndex].answers[i])
     $("#answerDisplay").append(answerBtn)
     answerBtn.on("click", function () {
-      processAnswer(allQuestions[currentQuestionIndex].answers[i])
+      processAnswer($(this).attr("data-value"))
     })
   }
 }
 
 function processAnswer(answer) {
   if (answer === allQuestions[currentQuestionIndex].correctAnswer) {
-    score++;
+    currentGameData.score++;
     $("#correctAnswerDiv").removeClass("hidden")
   }
   else {
