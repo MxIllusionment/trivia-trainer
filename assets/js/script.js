@@ -11,6 +11,107 @@ var currentGameData = {
   score: -1
 };
 
+var categoryData = [
+  {
+    category: "General Knowledge",
+    value: 9
+  },
+  {
+    category: "Books",
+    value: 10
+  },
+  {
+    category: "Film",
+    value: 11
+  },
+  {
+    category: "Music",
+    value: 12
+  },
+  {
+    category: "Musicals and Theatre",
+    value: 13
+  },
+  {
+    category: "TV",
+    value: 14
+  },
+  {
+    category: "Video Games",
+    value: 15
+  },
+  {
+    category: "Board Games",
+    value: 16
+  },
+  {
+    category: "Science and Nature",
+    value: 17
+  },
+  {
+    category: "Computers",
+    value: 18
+  },
+  {
+    category: "Math",
+    value: 19
+  },
+  {
+    category: "Mythology",
+    value: 20
+  },
+  {
+    category: "Sports",
+    value: 21
+  },
+  {
+    category: "Geography",
+    value: 22
+  },
+  {
+    category: "History",
+    value: 23
+  },
+  {
+    category: "Politics",
+    value: 24
+  },
+  {
+    category: "Art",
+    value: 25
+  },
+  {
+    category: "Celebrities",
+    value: 26
+  },
+  {
+    category: "Animals",
+    value: 27
+  },
+  {
+    category: "Vehicles",
+    value: 28
+  },
+  {
+    category: "Comic Books",
+    value: 29
+  },
+  {
+    category: "Gadgets",
+    value: 30
+  },
+  {
+    category: "Anime",
+    value: 31
+  },
+  {
+    category: "Cartoons and Animation",
+    value: 32
+  },
+
+]
+
+
 /* Returns a link to a user avatar image */
 function genUserAvatar(seed) {
   return "https://avatars.dicebear.com/api/gridy/" + seed + ".svg?colorful=1&deterministic=1";
@@ -131,6 +232,10 @@ function getTriviaUrl() {
   return triviaUrl;
 }
 
+
+
+
+
 /*shuffles an array put into it */
 function shuffle(array) {
   var currentIndex = array.length, tempValue, randomIndex;
@@ -225,9 +330,9 @@ $("#next-button").on("click", function () {
   startBotEngine();
 })
 
-function displayQuestion(response) {
-  $("#questionDiv").text(response.results[currentQuestionIndex].question)
-}
+// function displayQuestion(response) {
+//   $("#questionDiv").text(response.results[currentQuestionIndex].question)
+// }
 
 
 function putAnswersArray(response, i) {
