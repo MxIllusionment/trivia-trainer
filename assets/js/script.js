@@ -4,6 +4,8 @@ var triviaUrl = ""
 var currentQuestionIndex = 0;
 var allQuestions = [];
 var availableAnswers;
+var currentUser = -1;
+
 
 var currentGameData = {
   difficulty: "",
@@ -238,9 +240,6 @@ function getTriviaUrl() {
 }
 
 
-
-
-
 /*shuffles an array put into it */
 function shuffle(array) {
   var currentIndex = array.length, tempValue, randomIndex;
@@ -376,7 +375,29 @@ function finishQuestion() {
   $("#answerDisplay").addClass("hide")
   $("#next-button").removeClass("hide")
   stopBotEngine()
+
+  if (currentQuestionIndex === allQuestions.length - 1) {
+    endGame()
+  }
 }
+
+function endGame() {
+  //call savegamehistory
+  saveGameHistory(currentUser)
+  //display game over screen with score
+  var gameOverDisplay = $("#game-over")
+  //display score on gameOverDisplay
+  gameOverDisplay.text("GAME OVER! Your score was: " + currentGameData.score)
+  //button to move onto game history
+  var gameOverBtn = $("<button>")
+  gameOverBtn.text("Continue")
+  gameOverDisplay.append(gameOverBtn)
+  gameOverBtn.on("click", function () {
+    $("#history").removeClass("hide")
+    $("#quiz").addClass("hide")
+  })
+}
+
 
 /* Initialization items */
 loadUsers();
