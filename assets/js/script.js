@@ -4,6 +4,8 @@ var triviaUrl = ""
 var currentQuestionIndex = 0;
 var allQuestions = [];
 var availableAnswers;
+var currentUser = -1;
+
 
 var currentGameData = {
   difficulty: "",
@@ -380,7 +382,7 @@ function finishQuestion() {
 
 function endGame() {
   //call savegamehistory
-  saveGameHistory()
+  saveGameHistory(currentUser)
   //display game over screen with score
   var gameOverDisplay = $("#game-over")
   //display score on gameOverDisplay
