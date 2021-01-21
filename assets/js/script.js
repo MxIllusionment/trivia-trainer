@@ -329,6 +329,7 @@ $("#next-button").on("click", function () {
   $("#correctAnswerDiv").addClass("hide");
   $("#wrongAnswerDiv").addClass("hide");
   $("#botAnswerDiv").addClass("hide");
+  $("#next-button").addClass("hide");
   currentQuestionIndex++;
   $("#questionDisplay").removeClass("hide")
   $("#answerDisplay").removeClass("hide")
