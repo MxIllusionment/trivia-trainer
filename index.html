@@ -15,7 +15,37 @@
 <body>
     <header class="header"><h1>Trivia Trainer</h1></header>
 
+    <div class="start-screen">
+        <div class="container">
 
+            <div class="row">
+
+              <div class="col-6">                
+                <div class="input-group user_input">
+                    <input type="text" class="form-control" placeholder="Enter Username" aria-label="Enter Username" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Create User</button>
+                    </div>
+                  </div>
+                <div class="col-12 previous_users">
+                    <div class="card">
+                        <h5>Previous Users List:</h5>
+                        <ol id="users"></ol>
+                    </div>                                       
+                </div>                  
+              </div>
+
+              <div class="col-6">
+                <div class="image">
+                    <img src="./assets/images/question.jpg" alt="picture" style="width: 400px">
+                </div>
+               
+              </div>
+
+            </div>
+          </div>
+
+    </div>
     <div id="history" class="hide">
         <div class="wrapper">
             <h1 id="history_header">Last Players:</h1>
