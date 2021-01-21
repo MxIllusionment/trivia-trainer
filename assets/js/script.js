@@ -386,7 +386,7 @@ function endGame() {
   //display game over screen with score
   var gameOverDisplay = $("#game-over")
   //display score on gameOverDisplay
-  gameOverDisplay.text("GAME OVER! Your score was: " + score)
+  gameOverDisplay.text("GAME OVER! Your score was: " + currentGameData.score)
   //button to move onto game history
   var gameOverBtn = $("<button>")
   gameOverBtn.text("Continue")
