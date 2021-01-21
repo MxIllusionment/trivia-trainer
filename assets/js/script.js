@@ -373,11 +373,12 @@ function saveGameHistory(userIdx) {
 function finishQuestion() {
   $("#questionDisplay").addClass("hide")
   $("#answerDisplay").addClass("hide")
-  $("#next-button").removeClass("hide")
   stopBotEngine()
 
   if (currentQuestionIndex === allQuestions.length - 1) {
     endGame()
+  } else {
+    $("#next-button").removeClass("hide");
   }
 }
 
