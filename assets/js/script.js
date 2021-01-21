@@ -295,20 +295,21 @@ function renderQuestion() {
   for (var i = 0; i < allQuestions[currentQuestionIndex].answers.length; i++) {
     var answerBtn = $("<button>")
     answerBtn.html(allQuestions[currentQuestionIndex].answers[i])
+    answerBtn.attr("data-value", allQuestions[currentQuestionIndex].answers[i])
     $("#answerDisplay").append(answerBtn)
     answerBtn.on("click", function () {
-      processAnswer(allQuestions[currentQuestionIndex].answers[i])
+      processAnswer($(this).attr("data-value"))
     })
   }
 }
 
 function processAnswer(answer) {
   if (answer === allQuestions[currentQuestionIndex].correctAnswer) {
-    score++;
-    $("#correctAnswerDiv").removeClass("hidden")
+    currentGameData.score++;
+    $("#correctAnswerDiv").removeClass("hide")
   }
   else {
-    $("#wrongAnswerDiv").removeClass("hidden")
+    $("#wrongAnswerDiv").removeClass("hide")
     $("#wrongAnswerDiv").html("Correct Answer: " + allQuestions[currentQuestionIndex].correctAnswer)
   }
   finishQuestion();
@@ -318,19 +319,19 @@ function processAnswer(answer) {
 function processBotAnswer(answer) {
   if (answer === allQuestions[currentQuestionIndex].correctAnswer) {
     $("#botAnswerDiv").html("An opponent answered first: " + allQuestions[currentQuestionIndex].correctAnswer);
-    $("#botAnswerDiv").removeClass("hidden");
+    $("#botAnswerDiv").removeClass("hide");
     finishQuestion();
   }
 }
 
 
 $("#next-button").on("click", function () {
-  $("#correctAnswerDiv").addClass("hidden");
-  $("#wrongAnswerDiv").addClass("hidden");
-  $("#botAnswerDiv").addClass("hidden");
+  $("#correctAnswerDiv").addClass("hide");
+  $("#wrongAnswerDiv").addClass("hide");
+  $("#botAnswerDiv").addClass("hide");
   currentQuestionIndex++;
-  $("#questionDisplay").removeClass("hidden")
-  $("#answerDisplay").removeClass("hidden")
+  $("#questionDisplay").removeClass("hide")
+  $("#answerDisplay").removeClass("hide")
   renderQuestion();
   startBotEngine();
 })
@@ -370,9 +371,9 @@ function saveGameHistory(userIdx) {
 }
 
 function finishQuestion() {
-  $("#questionDisplay").addClass("hidden")
-  $("#answerDisplay").addClass("hidden")
-  $("#next-button").removeClass("hidden")
+  $("#questionDisplay").addClass("hide")
+  $("#answerDisplay").addClass("hide")
+  $("#next-button").removeClass("hide")
   stopBotEngine()
 }
 
