@@ -3,6 +3,7 @@ var users = [];
 var triviaUrl = ""
 var currentQuestionIndex = 0;
 var allQuestions = [];
+var availableAnswers;
 
 var currentGameData = {
   difficulty: "",
@@ -76,12 +77,15 @@ function botHandler(botIdx) {
   /* Check if bot will answer */
   if (!bots[botIdx].answered && (Math.random() < answerChance)) {
     var botAnswer;
-    var answerArray = allQuestions[currentQuestionIndex].answers;
+    var answerIndex = Math.floor(Math.random() * availableAnswers.length);
 
     bots[botIdx].answered = true;
 
     /* Randomly select an answer */
-    botAnswer = answerArray[Math.floor(Math.random() * answerArray.length)];
+    botAnswer = availableAnswers[answerIndex];
+
+    /* Remove selected answer from available answers */
+    availableAnswers.splice(answerIndex, 1);
 
     /* Render answer */
     renderAnswer(bots[botIdx].url, botAnswer);
@@ -95,6 +99,7 @@ function botHandler(botIdx) {
 function startBotEngine() {
   var botTimer = 4000; // base ms timer for each bot
 
+  availableAnswers = allQuestions[currentQuestionIndex].answers;
   for (var i = 0; i < bots.length; i++) {
     var timerRand = Math.floor(Math.random() * 1000);
 
