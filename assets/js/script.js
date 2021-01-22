@@ -181,6 +181,20 @@ function clickUser() {
   openSetupPage();
 }
 
+// function addNewUser() {
+//   var newUserDiv = $("<div>")
+//   newUserDiv.text($("#userInput").val())
+//   $("#users").prepend(newUserDiv)
+// }
+
+
+$(".userButton").on("click", function (name) {
+  name = $("#userInput").val()
+  addUser(name)
+  $("#userInput").val("")
+  openSetupPage()
+})
+
 /* Renders list of users to front end */
 function renderUsers() {
   $("#users").empty();
