@@ -161,6 +161,7 @@ $(".view-history").on("click", function () {
 })
 
 $(".header").on("click", function () {
+  stopBotEngine();
   openStartPage()
 })
 
@@ -512,7 +513,7 @@ function endGame() {
   saveGameHistory(currentUser)
 
   // Clear bot display
-  $("botDiv").empty();
+  $("#botDiv").empty();
 
   //display game over screen with score
   var gameOverDisplay = $("#game-over")
