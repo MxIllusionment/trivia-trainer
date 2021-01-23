@@ -83,3 +83,9 @@ header {
     background-color: lightgoldenrodyellow;
     color: blue;
 }
+
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
