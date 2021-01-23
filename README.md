@@ -10,7 +10,7 @@ The trivia trainer is a website that allows you to train against several opponen
 
 ## Using The Trivia Trainer
 
-To use the trivia trainer, either enter a new username and click the button, or select from a list of past users. After selecting the user, you will be taken automatically to the setup page. This will allow you to select any categories, amount of questions, and difficulty that you want. From here, you can view the past records of the user that have selected, or contiue onto the quiz. To take the quiz, just select the correct answer before the opponents do.
+To use the trivia trainer, either enter a new username and click the button, or select from a list of past users. After selecting the user, you will be taken automatically to the setup page. This will allow you to select any categories, amount of questions, and difficulty that you want. From here, you can view the past records of the user that have selected, or continue onto the quiz. To take the quiz, just select the correct answer before the opponents do.
 
 ## Screenshots
 
