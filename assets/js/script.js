@@ -458,10 +458,24 @@ function saveGameHistory(userIdx) {
   var newHistory = {
     date: dayjs().format("MM/DD/YYYY"),
     time: dayjs().format("h:mmA"),
-    difficulty: currentGameData.difficulty,
-    category: currentGameData.category,
     score: currentGameData.score + "/" + currentGameData.questions
   };
+
+  newHistory.difficulty = currentGameData.difficulty === "" ? "Any" : currentGameData.difficulty;
+
+  /* Lookup category value and translate into string */
+  if (currentGameData.category === "") {
+    newHistory.category = "Any";
+  } else {
+    var catVal = parseInt(currentGameData.category);
+    for (var i = 0; i < categoryData.length; i++) {
+      if (catVal === categoryData[i].value) {
+        console.log(categoryData[i].value)
+        newHistory.category = categoryData[i].category;
+        break;
+      }
+    }
+  }
 
   users[userIdx].history.push(newHistory);
   saveUsers();
