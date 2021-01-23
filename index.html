@@ -3,53 +3,61 @@
 
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Trivia Trainer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Trivia Trainer</title>
 
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
-    <header class="header"><h1>Trivia Trainer</h1></header>
 
-    <div id="start" class="start">
+<body>
+    <header class="header">
+        <h1>Trivia Trainer</h1>
+    </header>
+
+    <div id="start-screen" class="start-screen">
         <div class="container">
 
             <div class="row">
 
-              <div class="col-6">                
-                <div class="input-group user_input">
-                    <input type="text" class="form-control" placeholder="Enter Username" aria-label="Enter Username" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Create User</button>
+                <div class="col-6">
+                    <div class="input-group user_input">
+                        <input type="text" class="form-control" placeholder="Enter Username" id="userInput"
+                            aria-label="Enter Username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary userButton" type="button" id="button-addon2">Create
+                                User</button>
+                        </div>
                     </div>
-                  </div>
-                <div class="col-12 previous_users">
-                    <div class="card">
-                        <h5>Previous Users List:</h5>
-                        <ol id="users"></ol>
-                    </div>                                       
-                </div>                  
-              </div>
-
-              <div class="col-6">
-                <div class="image">
-                    <img src="./assets/images/question.jpg" alt="picture" style="width: 400px">
+                    <div class="col-12 previous_users">
+                        <div class="card">
+                            <h5>Previous Users List:</h5>
+                            <ol id="users"></ol>
+                        </div>
+                    </div>
                 </div>
-               
-              </div>
+
+                <div class="col-6">
+                    <div class="image">
+                        <img src="./assets/images/question.jpg" alt="picture" style="width: 400px">
+                    </div>
+
+                </div>
 
             </div>
         </div>
+
     </div>
 
     <div id="setup-screen" class="hide">
         <div class="container">
 
             <div class="row">
+
 
               <div class="col-6">                
                 <div id="choose" class="card">
