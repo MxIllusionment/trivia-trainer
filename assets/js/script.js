@@ -123,7 +123,7 @@ var categoryData = [
 function openStartPage() {
   renderUsers();
   $(".start-screen").removeClass("hide");
-  $("#setup").addClass("hide");
+  $("#setup-screen").addClass("hide");
   $("#quiz").addClass("hide");
   $("#history").addClass("hide");
 }
@@ -131,7 +131,7 @@ function openStartPage() {
 /* Initialization and opening of game setup page */
 function openSetupPage() {
   $(".start-screen").addClass("hide");
-  $("#setup").removeClass("hide");
+  $("#setup-screen").removeClass("hide");
   $("#quiz").addClass("hide");
   $("#history").addClass("hide");
 }
@@ -139,7 +139,7 @@ function openSetupPage() {
 /* Initialization and opening of quiz/game page */
 function openQuizPage() {
   $(".start-screen").addClass("hide");
-  $("#setup").addClass("hide");
+  $("#setup-screen").addClass("hide");
   $("#quiz").removeClass("hide");
   $("#history").addClass("hide");
 }
@@ -147,7 +147,7 @@ function openQuizPage() {
 //Initialization and opening of game history page
 function openHistoryPage() {
   $(".start-screen").addClass("hide");
-  $("#setup").addClass("hide");
+  $("#setup-screen").addClass("hide");
   $("#quiz").addClass("hide");
   $("#history").removeClass("hide");
 }
@@ -314,7 +314,9 @@ function getTriviaUrl() {
   else {
     triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&category=" + category + "&difficulty=" + difficulty + "&type=multiple"
   }
+
   return triviaUrl;
+
 }
 
 
