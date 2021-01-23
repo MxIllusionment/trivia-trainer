@@ -1,6 +1,8 @@
 # Trivia Trainer
 
 ![GitHub Commits](https://img.shields.io/github/commit-activity/w/malenchite/trivia-trainer?style=social)
+![Language Count](https://img.shields.io/github/languages/count/malenchite/trivia-trainer?style=social)
+![Code Size](https://img.shields.io/github/languages/code-size/malenchite/trivia-trainer?style=social)
 
 The trivia trainer is a website that allows you to train against several opponents to better yourself at trivia. It allows you to select your own username and choose several options, such as difficulty and category.
 
@@ -15,13 +17,24 @@ To use the trivia trainer, either enter a new username and click the button, or 
 
 Thank you to the following people that have contributed to this project:
 
-*Steven Israel
-*Elena Magay
-*Eric Ellis
-*Ishi Mustain
-*Chris Risseler
+-Steven Israel
+
+-Elena Magay
+
+-Eric Ellis
+
+-Ishi Mustain
+
+-Chris Risseler
+
+
+## Credits
+
+The following APIs were used in the creation of this project:
+DiceBear Avatars
+Open Trivia API
 
 ## License
 
-This project uses the following license: MIT License Copywright(c) 2021
+This project uses the following license: MIT License Copywrite(c) 2021
 <a href = "assets/license.md">License Here.</a>

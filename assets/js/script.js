@@ -115,8 +115,6 @@ var categoryData = [
 
 ]
 
-//renders the text and values of the category drop down menu
-
 
 
 /* Initialization and opening of start/user select page */
@@ -152,6 +150,23 @@ function openHistoryPage() {
   $("#history").removeClass("hide");
 }
 
+//click function for navigation buttons
+$(".new-user").on("click", function () {
+  openStartPage()
+})
+
+$(".view-history").on("click", function () {
+  openHistoryPage()
+})
+
+$(".header").on("click", function () {
+  openStartPage()
+})
+
+$(".view-setup").on("click", function () {
+  openSetupPage()
+})
+
 /* Returns a link to a user avatar image */
 function genUserAvatar(seed) {
   return "https://avatars.dicebear.com/api/gridy/" + seed + ".svg?colorful=1&deterministic=1&w=100&h=100";
@@ -184,7 +199,6 @@ function clickUser() {
 
   openSetupPage();
 }
-
 
 
 $(".userButton").on("click", function (name) {
@@ -334,7 +348,7 @@ function shuffle(array) {
 }
 
 /*for when we click to play game, this gets the url */
-$("#play-game").on("click", function (event) {
+$("#start-game").on("click", function (event) {
 
   var triviaUrl = getTriviaUrl();
   // var triviaUrl = "https://opentdb.com/api.php?amount=10&type=multiple"
