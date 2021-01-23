@@ -204,7 +204,7 @@ function clickUser() {
 
 $(".userButton").on("click", function (name) {
   name = $("#userInput").val()
-  addUser(name)
+  currentUser = addUser(name)
   $("#userInput").val("")
   openSetupPage()
 })
@@ -503,6 +503,7 @@ function endGame() {
   //display game over screen with score
   var gameOverDisplay = $("#game-over")
   //display score on gameOverDisplay
+  gameOverDisplay.removeClass("hide")
   gameOverDisplay.text("GAME OVER! Your score was: " + currentGameData.score)
   //button to move onto game history
   var gameOverBtn = $("<button>")
