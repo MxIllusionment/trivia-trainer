@@ -80,6 +80,22 @@ header {
 
 .new-user,
 .view-history {
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(87, 85, 68);
+    color: blue;
+}
+
+.new-user:hover,
+.view-history:hover {
+    background-color:  rgb(182, 178, 147);
+    color: blue;
+}
+
+.new-game {
+    background-color: lightcoral;
+    color: blue;
+}
+
+.new-game:hover {
+    background-color: rgb(236, 184, 184);
     color: blue;
 }
