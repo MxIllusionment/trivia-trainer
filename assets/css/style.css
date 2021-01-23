@@ -82,13 +82,15 @@ h1 {
 }
 
 .new-user,
-.view-history {
+.view-history,
+.view-setup {
     background-color: rgb(87, 85, 68);
     color: blue;
 }
 
 .new-user:hover,
-.view-history:hover {
+.view-history:hover,
+.view-setup:hover {
     background-color:  rgb(182, 178, 147);
     color: blue;
 }
