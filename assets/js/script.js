@@ -482,9 +482,13 @@ function finishQuestion() {
 //function to render history
 function renderHistory() {
   $("#past_records").empty()
-  var newHistoryList = $("<li>")
-  newHistoryList.text("Date: " + newHistory.date + " , Time: " + newHistory.time + " , Difficulty: " + newHistory.difficulty + " , Category: " + newHistory.category + " , Score: " + newHistory.score)
-  $("#past_records").prepend(newHistoryList)
+  users[currentUser].history.forEach(function (history) {
+    var newHistoryList = $("<li>")
+    newHistoryList.text("Date: " + history.date + " , Time: " + history.time + " , Difficulty: " + history.difficulty + " , Category: " + history.category + " , Score: " + history.score)
+    $("#past_records").prepend(newHistoryList)
+    // console.log("this")
+  })
+
 }
 
 
