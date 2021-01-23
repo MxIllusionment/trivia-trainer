@@ -144,6 +144,7 @@ function openQuizPage() {
 
 //Initialization and opening of game history page
 function openHistoryPage() {
+  renderHistory();
   $(".start-screen").addClass("hide");
   $("#setup-screen").addClass("hide");
   $("#quiz").addClass("hide");
@@ -333,6 +334,7 @@ function getTriviaUrl() {
 
 }
 
+console.log(getTriviaUrl())
 
 /*shuffles an array put into it */
 function shuffle(array) {
@@ -477,6 +479,16 @@ function finishQuestion() {
   }
 }
 
+//function to render history
+function renderHistory() {
+  $("#past_records").empty()
+  var newHistoryList = $("<li>")
+  newHistoryList.text("Date: " + newHistory.date + " , Time: " + newHistory.time + " , Difficulty: " + newHistory.difficulty + " , Category: " + newHistory.category + " , Score: " + newHistory.score)
+  $("#past_records").prepend(newHistoryList)
+}
+
+
+//function to end game
 function endGame() {
   //call savegamehistory
   saveGameHistory(currentUser)
