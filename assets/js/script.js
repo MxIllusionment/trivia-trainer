@@ -204,7 +204,7 @@ function clickUser() {
 
 $(".userButton").on("click", function (name) {
   name = $("#userInput").val()
-  addUser(name)
+  currentUser = addUser(name)
   $("#userInput").val("")
   openSetupPage()
 })
