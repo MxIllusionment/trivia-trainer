@@ -115,6 +115,10 @@ var categoryData = [
 
 ]
 
+//renders the text and values of the category drop down menu
+
+
+
 /* Initialization and opening of start/user select page */
 function openStartPage() {
   renderUsers();
@@ -181,11 +185,6 @@ function clickUser() {
   openSetupPage();
 }
 
-// function addNewUser() {
-//   var newUserDiv = $("<div>")
-//   newUserDiv.text($("#userInput").val())
-//   $("#users").prepend(newUserDiv)
-// }
 
 
 $(".userButton").on("click", function (name) {
