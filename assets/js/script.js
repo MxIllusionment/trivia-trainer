@@ -115,15 +115,13 @@ var categoryData = [
 
 ]
 
-//renders the text and values of the category drop down menu
-
 
 
 /* Initialization and opening of start/user select page */
 function openStartPage() {
   renderUsers();
   $(".start-screen").removeClass("hide");
-  $("#setup").addClass("hide");
+  $("#setup-screen").addClass("hide");
   $("#quiz").addClass("hide");
   $("#history").addClass("hide");
 }
@@ -131,7 +129,7 @@ function openStartPage() {
 /* Initialization and opening of game setup page */
 function openSetupPage() {
   $(".start-screen").addClass("hide");
-  $("#setup").removeClass("hide");
+  $("#setup-screen").removeClass("hide");
   $("#quiz").addClass("hide");
   $("#history").addClass("hide");
 }
@@ -139,7 +137,7 @@ function openSetupPage() {
 /* Initialization and opening of quiz/game page */
 function openQuizPage() {
   $(".start-screen").addClass("hide");
-  $("#setup").addClass("hide");
+  $("#setup-screen").addClass("hide");
   $("#quiz").removeClass("hide");
   $("#history").addClass("hide");
 }
@@ -147,10 +145,27 @@ function openQuizPage() {
 //Initialization and opening of game history page
 function openHistoryPage() {
   $(".start-screen").addClass("hide");
-  $("#setup").addClass("hide");
+  $("#setup-screen").addClass("hide");
   $("#quiz").addClass("hide");
   $("#history").removeClass("hide");
 }
+
+//click function for navigation buttons
+$(".new-user").on("click", function () {
+  openStartPage()
+})
+
+$(".view-history").on("click", function () {
+  openHistoryPage()
+})
+
+$(".header").on("click", function () {
+  openStartPage()
+})
+
+$(".view-setup").on("click", function () {
+  openSetupPage()
+})
 
 /* Returns a link to a user avatar image */
 function genUserAvatar(seed) {
@@ -184,7 +199,6 @@ function clickUser() {
 
   openSetupPage();
 }
-
 
 
 $(".userButton").on("click", function (name) {
@@ -314,7 +328,9 @@ function getTriviaUrl() {
   else {
     triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&category=" + category + "&difficulty=" + difficulty + "&type=multiple"
   }
+
   return triviaUrl;
+
 }
 
 
@@ -332,7 +348,7 @@ function shuffle(array) {
 }
 
 /*for when we click to play game, this gets the url */
-$("#play-game").on("click", function (event) {
+$("#start-game").on("click", function (event) {
 
   var triviaUrl = getTriviaUrl();
   // var triviaUrl = "https://opentdb.com/api.php?amount=10&type=multiple"
