@@ -105,6 +105,7 @@ h1 {
     color: blue;
 }
 
+/* Removes Question Image from site for people on Mobile Devices */
 @media (max-width: 767px) {
   .hidden-mobile {
     display: none;

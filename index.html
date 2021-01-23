@@ -21,9 +21,7 @@
 
     <div id="start-screen" class="start-screen">
         <div class="container">
-
             <div class="row">
-
                 <div class="col-6">
                     <div class="input-group user_input">
                         <input type="text" class="form-control" placeholder="Enter Username" id="userInput"
@@ -46,15 +44,12 @@
                         <img src="./assets/images/question.jpg" alt="picture" style="width: 400px">
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 
     <div id="setup-screen" class="hide">
         <div class="container">
-
             <div class="row">
 
 
@@ -122,14 +117,10 @@
                 </div>     
               </div>
 
-              <div class="col-6">
-                <div class="image hidden-mobile">
-                    <img src="./assets/images/question.jpg" alt="picture" style="width: 400px">
                 </div>
               </div>
             </div>
         </div>
-    </div>
 
     <div id="history" class="hide">
         <div class="wrapper">
@@ -139,13 +130,18 @@
             <button type="button" class="btn new-user">Select new user</button>
             <button type="button" class="btn view-setup">Setup game</button>
         </div>
+
+        <div id="game-over" class="hide"></div>
+        <div id="correctAnswerDiv" class="hide">You're Correct!</div>
+        <div id="wrongAnswerDiv" class="hide">Wrong Answer</div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.3/dayjs.min.js"
+            integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
+            crossorigin="anonymous">
+            </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/js/script.js"></script>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.3/dayjs.min.js"
-        integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
-        crossorigin="anonymous">
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
