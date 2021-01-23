@@ -481,6 +481,7 @@ function finishQuestion() {
 
 //function to render history
 function renderHistory() {
+  $("#past_records").empty()
   var newHistoryList = $("<li>")
   newHistoryList.text("Date: " + newHistory.date + " , Time: " + newHistory.time + " , Difficulty: " + newHistory.difficulty + " , Category: " + newHistory.category + " , Score: " + newHistory.score)
   $("#past_records").prepend(newHistoryList)
