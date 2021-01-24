@@ -124,7 +124,7 @@ function openStartPage() {
   renderUsers();
   $(".start-screen").removeClass("hide");
   $("#setup-screen").addClass("hide");
-  $("#quiz").addClass("hide");
+  $("#Game-screen").addClass("hide");
   $("#history").addClass("hide");
 }
 
@@ -132,7 +132,7 @@ function openStartPage() {
 function openSetupPage() {
   $(".start-screen").addClass("hide");
   $("#setup-screen").removeClass("hide");
-  $("#quiz").addClass("hide");
+  $("#Game-screen").addClass("hide");
   $("#history").addClass("hide");
 }
 
@@ -140,7 +140,7 @@ function openSetupPage() {
 function openQuizPage() {
   $(".start-screen").addClass("hide");
   $("#setup-screen").addClass("hide");
-  $("#quiz").removeClass("hide");
+  $("#Game-Screen").removeClass("hide");
   $("#history").addClass("hide");
 }
 
@@ -148,7 +148,7 @@ function openQuizPage() {
 function openHistoryPage() {
   $(".start-screen").addClass("hide");
   $("#setup-screen").addClass("hide");
-  $("#quiz").addClass("hide");
+  $("#Game-screen").addClass("hide");
   $("#history").removeClass("hide");
 }
 
