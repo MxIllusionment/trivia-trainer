@@ -1,0 +1,135 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.animation-area_1 {
+    position: absolute;
+    background:linear-gradient( to right, #FFC0CB,#ff00ff );
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.container_0 {
+    position: relative;
+    border: 5px solid black;
+    background-color: #ff00ff;
+    color:#DDDDDD; 
+    width: 1000px;
+    height: auto;
+    margin-left: 600px;
+    text-align: center;
+    text-shadow: 1px, 1px, 1px #3D9970;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 60px;
+    font-family: "Fredoka One", cursive;
+    text-shadow: 1px, 1px, 1px #3D9970, 2px, 2px, 2px #3D9970;
+    cursor: pointer;
+}
+
+.container_1 {
+    position: relative;
+    border: 5px solid black;
+    background-color: #ff00ff;
+    color: #DDDDDD;
+    width: 650px;
+    height: 675px;
+    margin-left: 400px;
+    margin-top: 50px;
+    z-index: 1;
+}
+
+h2 {
+    font-size: 60px;
+    font-family: "Fredoka One", cursive;
+    text-align: center;
+}
+
+.answer-choice {
+    border: 5px solid black;
+    background-color: #ff00ff;
+    color: #DDDDDD;
+    width: 60px; 
+    height: 60px;
+    margin-top: 50px;
+    margin-left: 15px;
+}
+
+.container_2 {
+    position: absolute;
+    border: 5px solid black;
+    background-color: #ff00ff;
+    color: #DDDDDD;
+    width: 650px;
+    height: 675px;
+    margin-top: -675px;
+    margin-left: 1100px;
+    z-index: 1;
+}
+.col-md-3_1 {
+    position: absolute;
+    border: 5px solid black;
+    background-color: white;
+    width: 100px;
+    height: 125px; 
+    margin-left: 30px;
+    margin-bottom: 100px;
+    z-index: 1;
+}
+
+
+.col-md-9_1 {
+    position: absolute;
+    margin-top: 55px;
+    margin-left: 110px;
+    width: 500px;
+    z-index: 1;
+}
+
+
+
+.col-md-9 {
+    position: absolute;
+    margin-top: 55px;
+    margin-left: 100px;
+    z-index: 1;
+}
+
+.row_1 {
+    height:auto;
+
+}
+
+
+
+
+h3 {
+    font-size: 60px;
+    font-family: "Fredoka One", cursive;
+    text-align: center;
+}
+
+.col-md-3_1 {
+    position: relative;
+    border: 5px solid black;
+    background-color: white;
+    width: 100px;
+    height: 125px; 
+    margin-left: 30px;
+    z-index: 1;
+}
+
+.col-md-9_1 {
+    position: relative;
+    margin-top: 55px;
+    margin-left: 110px;
+    width: 500px;
+    z-index: 1;
+}
+
