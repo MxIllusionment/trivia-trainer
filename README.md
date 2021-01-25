@@ -1,7 +1,7 @@
 # Trivia Trainer
 
-![GitHub Commits](https://img.shields.io/github/commit-activity/w/malenchite/trivia-trainer?style=social)
-![Code Size](https://img.shields.io/github/languages/code-size/malenchite/trivia-trainer?style=social)
+![GitHub Commits](https://img.shields.io/github/commit-activity/w/malenchite/trivia-trainer)
+![Code Size](https://img.shields.io/github/languages/code-size/malenchite/trivia-trainer)
 ![Image of HTML badge](https://img.shields.io/badge/HTML-30.4%25-orange) 
 ![Image of CSS badge](https://img.shields.io/badge/CSS-11.6%25-purple)
 ![Image of JavaScript badge](https://img.shields.io/badge/JavaScript-58%25-yellow)
