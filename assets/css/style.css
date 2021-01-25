@@ -5,11 +5,11 @@
 
 }
 h1 {
-    color:royalblue;
+    color:#053225;
     text-align: center;
     font-size: 100px;
     font-weight: bold;
-    text-shadow: 4px 4px 7px blue;
+    text-shadow: 4px 4px 7px #074433;
 }
 
 .hide {
@@ -20,30 +20,11 @@ h1 {
     text-align: center;
     background-color: #764c3c;
     background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23f4ecec' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    color:royalblue;
+    color:#053225;
     font-size: 40px;
     font-weight: bold;
-    text-shadow: 3px 3px 5px blue;
-
+    text-shadow: 3px 3px 5px #074433;
 }
-
-#clear {
-    display: inline-block;
-    margin: 5px;
-    cursor: pointer;
-    font-size: 100%;
-    background-color: #0aa12f;
-    border-radius: 10px;
-    padding: 2px 10px;
-    color: white;
-    border: 0;
-    transition: background-color 0.1s;
-    text-align:right;
-  }
-
-#clear:hover {
-    background-color: #3aa154;
-  }
 
 .user_input {
     margin-top: 30px;
@@ -66,8 +47,8 @@ h1 {
 }
 
 #button-addon2 {
-    background-color: brown;
-    color: wheat;
+    background-color: #fe5f55;
+    color: #F7EBE8;
     border-radius: 10px;
 }
 
@@ -79,7 +60,7 @@ h1 {
 
 #choose {
     margin-top: 30px;
-    background-color: lightgoldenrodyellow;
+    background-color: #F7EBE8;
 }
 
 .return {
@@ -91,25 +72,25 @@ h1 {
 .new-user,
 .view-history,
 .view-setup {
-    background-color: rgb(182, 178, 147);
-    color: blue;
+    background-color: #8fb339;
+    color:  #074433;
 }
 
 .new-user:hover,
 .view-history:hover,
 .view-setup:hover {
-    background-color:  rgb(182, 178, 147);
-    color: blue;
+    background-color:  #8fb339;
+    color:  #074433;
 }
 
 .new-game {
-    background-color: lightcoral;
-    color: blue;
+    background-color:  #fe5f55;
+    color:  #074433;
 }
 
 .new-game:hover {
-    background-color: rgb(236, 184, 184);
-    color: blue;
+    background-color:  #ff7f76;
+    color:  #074433;
 }
 
 @media (max-width: 767px) {
