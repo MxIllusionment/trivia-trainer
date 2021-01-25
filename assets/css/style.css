@@ -38,6 +38,9 @@ h1 {
 
 .previous_users {
     padding: 5px;
+    font-size: 22px;
+    font-family: 'Jura', sans-serif;
+    margin-top: 5px;
 }
 
 .user-avatar {
