@@ -83,3 +83,122 @@ header {
     background-color: lightgoldenrodyellow;
     color: blue;
 }
+
+
+
+header-1 {color: violet;
+    text-align: center;
+    padding: 15px;
+
+    background-color:  lightgoldenrodyellow;
+}
+
+
+
+
+
+
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #764c3c;
+    background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23f4ecec' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    height:50%;
+    width:50%;
+}
+
+
+
+
+.container_0 {
+    border: 5px solid black;
+    color:violet; 
+    width: 1000px;
+    height: auto;
+    margin-left: 600px;
+    text-align: center;
+    text-shadow: 1px, 1px, 1px #3D9970;
+    z-index: 1;
+    background-color:  lightgoldenrodyellow;
+  
+}
+
+h1 {
+    font-size: 60px;
+    font-family: "Fredoka One", cursive;
+    text-shadow: 1px, 1px, 1px #3D9970, 2px, 2px, 2px #3D9970;
+    cursor: pointer;
+}
+
+.container_1 {
+    border: 5px solid black;
+    color:violet;
+    width: 650px;
+    height: 675px;
+    margin-left: 400px;
+    margin-top: 50px;
+    z-index: 1;
+    background-color:  lightgoldenrodyellow;
+}
+
+h2 {
+    font-size: 60px;
+    font-family: "Fredoka One", cursive;
+    text-align: center;
+}
+
+.answer-choice {
+    border: 5px solid black;
+    background-color:brown;
+    color: #DDDDDD;
+    width: 60px; 
+    height: 60px;
+    margin-top: 50px;
+    margin-left: 15px;
+}
+
+.container_2 {
+    border: 5px solid black;
+    color:violet;
+    width: 800px;
+    height: 675px;
+    margin-top: -675px;
+    margin-left: 1100px;
+    z-index: 1;
+    background-color: lightgoldenrodyellow;
+}
+.row_1 {
+    height:auto;
+
+}
+
+h3 {
+    font-size: 60px;
+    font-family: "Fredoka One", cursive;
+    text-align: center;
+}
+
+.col-md-9 {
+    margin-top: 60px;
+    margin-left: -60px;
+}
+
+.col-3 {
+    position:relative;
+    border: 5px solid black;
+    width:25px;
+    height:125px;
+    background-color: white;
+    margin-left: 10px;
+    margin-bottom:50px;
+}
+
+.col-9 {
+    position:relative;
+    margin-top: -130px;
+    width: 65px;
+    margin-left: 200px;
+
+}
+
