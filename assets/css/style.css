@@ -132,6 +132,13 @@ h1 {
     background-color: white;
 }
 
+#past_records {
+    font-family: "Jura";
+    font-size: 24px;
+    font-weight: 300;
+
+}
+
 @media (max-width: 1200px) {
     #user-container {
         min-height: 500px;
