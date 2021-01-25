@@ -33,11 +33,14 @@ h1 {
 /* Input field for user name */
 .user_input {
     margin-top: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 50px;
 }
 
 .previous_users {
     padding: 5px;
+    font-size: 22px;
+    font-family: 'Jura', sans-serif;
+    margin-top: 5px;
 }
 
 .user-avatar {
