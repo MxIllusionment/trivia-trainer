@@ -113,70 +113,79 @@ var categoryData = [
     value: 32
   },
 
-]
+];
 
 
 
 /* Initialization and opening of start/user select page */
 function openStartPage() {
   renderUsers();
-  $(".start-screen").removeClass("hide");
+  $("#start-screen").removeClass("hide");
   $("#setup-screen").addClass("hide");
-  $("#quiz").addClass("hide");
-  $("#history").addClass("hide");
+  $("#game-screen").addClass("hide");
+  $("#history-screen").addClass("hide");
 }
 
 /* Initialization and opening of game setup page */
 function openSetupPage() {
-  $(".start-screen").addClass("hide");
+  $("#invalid-options").addClass("hide");
+
+  $("#start-screen").addClass("hide");
   $("#setup-screen").removeClass("hide");
-  $("#quiz").addClass("hide");
-  $("#history").addClass("hide");
+  $("#game-screen").addClass("hide");
+  $("#history-screen").addClass("hide");
 }
 
 /* Initialization and opening of quiz/game page */
 function openQuizPage() {
-  $(".start-screen").addClass("hide");
+  $("#question-display").removeClass("hide");
+  $("#answer-display").removeClass("hide");
+  $("#answer-response").addClass("hide");
+  $("#next-button").addClass("hide");
+  $("#game-over").addClass("hide");
+  $("#end-game").addClass("hide");
+
+  $("#start-screen").addClass("hide");
   $("#setup-screen").addClass("hide");
-  $("#quiz").removeClass("hide");
-  $("#history").addClass("hide");
+  $("#game-screen").removeClass("hide");
+  $("#history-screen").addClass("hide");
 }
 
 //Initialization and opening of game history page
 function openHistoryPage() {
   renderHistory();
-  $(".start-screen").addClass("hide");
+  $("#start-screen").addClass("hide");
   $("#setup-screen").addClass("hide");
-  $("#quiz").addClass("hide");
-  $("#history").removeClass("hide");
+  $("#game-screen").addClass("hide");
+  $("#history-screen").removeClass("hide");
 }
 
 //click function for navigation buttons
 $(".new-user").on("click", function () {
-  openStartPage()
-})
+  openStartPage();
+});
 
 $(".view-history").on("click", function () {
-  openHistoryPage()
-})
+  openHistoryPage();
+});
 
 $(".header").on("click", function () {
   stopBotEngine();
-  openStartPage()
-})
+  openStartPage();
+});
 
 $(".view-setup").on("click", function () {
-  openSetupPage()
-})
+  openSetupPage();
+});
 
 /* Returns a link to a user avatar image */
 function genUserAvatar(seed) {
-  return "https://avatars.dicebear.com/api/gridy/" + seed + ".svg?colorful=1&deterministic=1&w=100&h=100";
+  return "https://avatars.dicebear.com/api/gridy/" + seed + ".svg?colorful=1&deterministic=1&w=75&h=75";
 }
 
 /* Returns a link to a bot avatar image */
 function genBotAvatar(seed) {
-  return "https://avatars.dicebear.com/api/bottts/" + seed + ".svg?colorful=1&mouthChance=50&sidesChance=50&topChance=50&w=100&h=100";
+  return "https://avatars.dicebear.com/api/bottts/" + seed + ".svg?colorful=1&mouthChance=50&sidesChance=50&topChance=50&w=75&h=75";
 }
 
 /* Initializes the bots list with a set number of new bots */
@@ -202,14 +211,6 @@ function clickUser() {
   openSetupPage();
 }
 
-
-$(".userButton").on("click", function (name) {
-  name = $("#userInput").val()
-  currentUser = addUser(name)
-  $("#userInput").val("")
-  openSetupPage()
-})
-
 /* Renders list of users to front end */
 function renderUsers() {
   $("#users").empty();
@@ -219,6 +220,7 @@ function renderUsers() {
     var newSpan = $("<span>").html(user.name);
 
     newImg.attr("data-index", idx);
+    newImg.addClass("user-avatar");
     newImg.click(clickUser);
 
     newDiv.append(newImg);
@@ -258,17 +260,27 @@ function loadUsers() {
 
 /* Renders bot answer to front end */
 function renderBotAnswer(imgURL, answer) {
-  var newBot = $("<div>");
+  var newBot = $("<div>").addClass("bot-answer");
+  var newRow = $("<div>").addClass("row");
   var newImg = $("<img>").attr("src", imgURL);
-  var newSpan = $("<span>").html("answered '" + answer + "'");
-  newBot.append(newImg);
-  newBot.append(newSpan);
-  $("#botDiv").append(newBot);
+  var newImgCol = $("<div>").addClass("col-4");
+  var newAnswer = $("<div>").addClass("col-8 bot-answer-text");
+
+  newImg.addClass("bot-avatar");
+  newImgCol.append(newImg);
+
+  newAnswer.html("answered '" + answer + "'");
+
+  newRow.append(newImgCol);
+  newRow.append(newAnswer);
+  newBot.append(newRow);
+
+  $("#bot-chat").append(newBot);
 }
 
 /* Callback function to handle bot behavior at set interval */
 function botHandler(botIdx) {
-  var answerChance = 0.25; // Probability that bot will answer
+  var answerChance = 0.45; // Probability that bot will answer
 
   /* Check if bot will answer */
   if (!bots[botIdx].answered && (Math.random() < answerChance)) {
@@ -293,12 +305,12 @@ function botHandler(botIdx) {
 
 /* Starts up the bot engine for all bots */
 function startBotEngine() {
-  var botTimer = 4000; // base ms timer for each bot
+  var botTimer = 3500; // base ms timer for each bot
 
   availableAnswers = allQuestions[currentQuestionIndex].answers;
-  $("#botDiv").empty();
+  $("#bot-chat").empty();
   for (var i = 0; i < bots.length; i++) {
-    var timerRand = Math.floor(Math.random() * 1000);
+    var timerRand = Math.floor(Math.random() * 2000);
 
     bots[i].answered = false;
     bots[i].interval = setInterval(botHandler, botTimer + timerRand, i);
@@ -314,28 +326,26 @@ function stopBotEngine() {
 
 /*get the trivial url based on selections from user */
 function getTriviaUrl() {
-  var difficulty = $("#difficulty").val()
-  var category = $("#category").val()
-  var questionAmount = $("#questionAmount").val()
+  var difficulty = $("#difficulty").val();
+  var category = $("#category").val();
+  var questionAmount = $("#questionAmount").val();
 
   if (difficulty === "" && category === "") {
-    triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&type=multiple"
+    triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&type=multiple";
   }
   else if (difficulty !== "" && category === "") {
-    triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&difficulty=" + difficulty + "&type=multiple"
+    triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&difficulty=" + difficulty + "&type=multiple";
   }
   else if (difficulty === "" && category !== "") {
-    triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&category=" + category + "&type=multiple"
+    triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&category=" + category + "&type=multiple";
   }
   else {
-    triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&category=" + category + "&difficulty=" + difficulty + "&type=multiple"
+    triviaUrl = "https://opentdb.com/api.php?amount=" + questionAmount + "&category=" + category + "&difficulty=" + difficulty + "&type=multiple";
   }
 
   return triviaUrl;
 
 }
-
-console.log(getTriviaUrl())
 
 /*shuffles an array put into it */
 function shuffle(array) {
@@ -350,100 +360,75 @@ function shuffle(array) {
   return array;
 }
 
-/*for when we click to play game, this gets the url */
-$("#start-game").on("click", function (event) {
-
-  var triviaUrl = getTriviaUrl();
-  // var triviaUrl = "https://opentdb.com/api.php?amount=10&type=multiple"
-
-  setCurrentGameData();
-  $.ajax({
-    url: triviaUrl,
-    method: "GET"
-  }).then(startGame);
-
-
-});
-
 /*Starts the game */
 function startGame(response) {
-  // console.log(response)
   //store required data to global
+  allQuestions = [];
   for (var i = 0; i < response.results.length; i++) {
     var newQuestion = {
       question: response.results[i].question,
       answers: putAnswersArray(response, i),
       correctAnswer: response.results[i].correct_answer
-    }
-    allQuestions.push(newQuestion)
+    };
+    allQuestions.push(newQuestion);
   }
-  // console.log(allQuestions)
 
-  initializeBots(4);
-  renderQuestion();
-  openQuizPage();
-  startBotEngine();
+  if (allQuestions.length === currentGameData.questions) {
+    currentQuestionIndex = 0;
+    initializeBots(4);
+    renderQuestion();
+    openQuizPage();
+    startBotEngine();
+  } else {
+    $("#invalid-options").removeClass("hide");
+  }
 }
 
+/* Renders the question and answer buttons */
 function renderQuestion() {
-  $("#questionDisplay").html(allQuestions[currentQuestionIndex].question)
-  $("#answerDisplay").empty()
+  $("#question-display").html(allQuestions[currentQuestionIndex].question);
+  $("#answer-display").empty();
   //display answers
   for (var i = 0; i < allQuestions[currentQuestionIndex].answers.length; i++) {
-    var answerBtn = $("<button>")
-    answerBtn.html(allQuestions[currentQuestionIndex].answers[i])
-    answerBtn.attr("data-value", allQuestions[currentQuestionIndex].answers[i])
-    $("#answerDisplay").append(answerBtn)
+    var answerBtn = $("<button>");
+    answerBtn.addClass("btn-block game-btn");
+    answerBtn.html(allQuestions[currentQuestionIndex].answers[i]);
+    answerBtn.attr("data-value", allQuestions[currentQuestionIndex].answers[i]);
+    $("#answer-display").append(answerBtn);
     answerBtn.on("click", function () {
-      processAnswer($(this).attr("data-value"))
-    })
+      processAnswer($(this).attr("data-value"));
+    });
   }
 }
 
+/* Processes a clicked user answer button */
 function processAnswer(answer) {
   if (answer === allQuestions[currentQuestionIndex].correctAnswer) {
     currentGameData.score++;
-    $("#correctAnswerDiv").removeClass("hide")
+    $("#answer-response").html("You got it right!");
   }
   else {
-    $("#wrongAnswerDiv").removeClass("hide")
-    $("#wrongAnswerDiv").html("Correct Answer: " + allQuestions[currentQuestionIndex].correctAnswer)
+    $("#answer-response").html("Wrong! Correct Answer: " + allQuestions[currentQuestionIndex].correctAnswer);
   }
+  $("#answer-response").removeClass("hide");
   finishQuestion();
 }
 
 /* Checks if a bot answer is correct and halts current question if it is*/
 function processBotAnswer(answer) {
   if (answer === allQuestions[currentQuestionIndex].correctAnswer) {
-    $("#botAnswerDiv").html("An opponent answered first: " + allQuestions[currentQuestionIndex].correctAnswer);
-    $("#botAnswerDiv").removeClass("hide");
+    $("#answer-response").html("An opponent answered first: " + allQuestions[currentQuestionIndex].correctAnswer);
+    $("#answer-response").removeClass("hide");
     finishQuestion();
   }
 }
 
-
-$("#next-button").on("click", function () {
-  $("#correctAnswerDiv").addClass("hide");
-  $("#wrongAnswerDiv").addClass("hide");
-  $("#botAnswerDiv").addClass("hide");
-  $("#next-button").addClass("hide");
-  currentQuestionIndex++;
-  $("#questionDisplay").removeClass("hide")
-  $("#answerDisplay").removeClass("hide")
-  renderQuestion();
-  startBotEngine();
-})
-
-// function displayQuestion(response) {
-//   $("#questionDiv").text(response.results[currentQuestionIndex].question)
-// }
-
-
+/* Creates a shuffled array of answers for a question */
 function putAnswersArray(response, i) {
-  var CurrentAnswerArray = response.results[i].incorrect_answers.concat(response.results[i].correct_answer)
+  var currentAnswerArray = response.results[i].incorrect_answers.concat(response.results[i].correct_answer)
   // console.log(answerArray)
-  shuffle(CurrentAnswerArray);
-  return CurrentAnswerArray;
+  shuffle(currentAnswerArray);
+  return currentAnswerArray;
 }
 
 /* Sets the global current game data */
@@ -462,7 +447,7 @@ function saveGameHistory(userIdx) {
     score: currentGameData.score + "/" + currentGameData.questions
   };
 
-  newHistory.difficulty = currentGameData.difficulty === "" ? "Any" : currentGameData.difficulty;
+  newHistory.difficulty = currentGameData.difficulty === "" ? "any" : currentGameData.difficulty;
 
   /* Lookup category value and translate into string */
   if (currentGameData.category === "") {
@@ -471,7 +456,6 @@ function saveGameHistory(userIdx) {
     var catVal = parseInt(currentGameData.category);
     for (var i = 0; i < categoryData.length; i++) {
       if (catVal === categoryData[i].value) {
-        console.log(categoryData[i].value)
         newHistory.category = categoryData[i].category;
         break;
       }
@@ -482,13 +466,14 @@ function saveGameHistory(userIdx) {
   saveUsers();
 }
 
+/* Updates for finalizing a question and moving on */
 function finishQuestion() {
-  $("#questionDisplay").addClass("hide")
-  $("#answerDisplay").addClass("hide")
-  stopBotEngine()
+  $("#question-display").addClass("hide");
+  $("#answer-display").addClass("hide");
+  stopBotEngine();
 
   if (currentQuestionIndex === allQuestions.length - 1) {
-    endGame()
+    endGame();
   } else {
     $("#next-button").removeClass("hide");
   }
@@ -496,38 +481,76 @@ function finishQuestion() {
 
 //function to render history
 function renderHistory() {
-  $("#past_records").empty()
-  users[currentUser].history.forEach(function (history) {
-    var newHistoryList = $("<li>")
-    newHistoryList.text("Date: " + history.date + " , Time: " + history.time + " , Difficulty: " + history.difficulty + " , Category: " + history.category + " , Score: " + history.score)
-    $("#past_records").prepend(newHistoryList)
-    // console.log("this")
-  })
+  $("#past_records").empty();
 
+  if (users[currentUser].history.length === 0) {
+    $("#past_records").text("Nothing here. Play some games!");
+  } else {
+    users[currentUser].history.forEach(function (history) {
+      var newHistoryItem = $("<div>");
+
+      newHistoryItem.text(history.date + " " + history.time + ":  Difficulty: " + history.difficulty + ",  Category: " + history.category + ", Score: " + history.score);
+      newHistoryItem.addClass("mb-1 history-item");
+
+      $("#past_records").prepend(newHistoryItem);
+    });
+  }
 }
-
 
 //function to end game
 function endGame() {
   //call savegamehistory
-  saveGameHistory(currentUser)
-
-  // Clear bot display
-  $("#botDiv").empty();
+  saveGameHistory(currentUser);
 
   //display game over screen with score
-  var gameOverDisplay = $("#game-over")
+  var gameOverDisplay = $("#game-over");
+
   //display score on gameOverDisplay
-  gameOverDisplay.removeClass("hide")
-  gameOverDisplay.text("GAME OVER! Your score was: " + currentGameData.score)
+  gameOverDisplay.text("GAME OVER! Your score was: " + currentGameData.score);
+  gameOverDisplay.removeClass("hide");
+
   //button to move onto game history
-  var gameOverBtn = $("<button>")
-  gameOverBtn.text("Continue")
-  gameOverDisplay.append(gameOverBtn)
-  gameOverBtn.on("click", function () {
-    openHistoryPage();
-  })
+  $("#end-game").removeClass("hide");
 }
+
+/* Click event to create a new user */
+$("#create-user").on("click", function (event) {
+  event.preventDefault();
+  var name = $("#user-input").val();
+  if (name !== "") {
+    currentUser = addUser(name);
+    $("#user-input").val("");
+    openSetupPage();
+  }
+});
+
+/*for when we click to play game, this gets the url */
+$("#start-game").on("click", function () {
+  var triviaUrl = getTriviaUrl();
+
+  setCurrentGameData();
+  $.ajax({
+    url: triviaUrl,
+    method: "GET"
+  }).then(startGame);
+});
+
+/* Click event for next question button */
+$("#next-button").on("click", function () {
+  $("#answer-response").addClass("hide");
+  $("#next-button").addClass("hide");
+  currentQuestionIndex++;
+  $("#question-display").removeClass("hide")
+  $("#answer-display").removeClass("hide")
+  renderQuestion();
+  startBotEngine();
+});
+
+/* Click event to finish game */
+$("#end-game").on("click", function () {
+  $("#bot-chat").empty();
+  openHistoryPage();
+});
 
 /* Initialization items */
 loadUsers();

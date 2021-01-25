@@ -2,132 +2,183 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Trivia Trainer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Trivia Trainer</title>
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <header class="header">
-        <h1>Trivia Trainer</h1>
-    </header>
+  <header class="header">
+    <h1>Trivia Trainer</h1>
+  </header>
 
-    <div id="start-screen" class="start-screen">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div class="input-group user_input">
-                        <input type="text" class="form-control" placeholder="Enter Username" id="userInput"
-                            aria-label="Enter Username" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary userButton" type="button" id="button-addon2">Create User</button>
-                        </div>
-                    </div>
-                    <div class="col-12 previous_users">
-                        <div class="card">
-                            <h5>Previous Users List:</h5>
-                            <ol id="users"></ol>
-                        </div>
-                    </div>
+  <main class="mt-3">
+    <!-- Initial page where user is added or selected -->
+    <div id="start-screen">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div id="user-container" class="card card-custom">
+              <div class="card-body">
+                <form class="input-group user_input">
+                  <input type="text" class="form-control" placeholder="Enter Username" id="user-input"
+                    aria-label="Enter Username" aria-describedby="create-user" maxlength="20">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary userButton" type="button" id="create-user">Create
+                      User</button>
+                  </div>
+                </form>
+                <div class="col-12 previous_users">
+                  <div class="card">
+                    <h5>Previous Users List:</h5>
+                    <ol id="users"></ol>
+                  </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div class="image hidden-mobile">
-                        <img src="./assets/images/question.jpg" alt="picture" style="width: 400px">
-                    </div>
-                </div>
+              </div>
             </div>
-        </div>
-    </div>
-
-    <div id="setup-screen" class="hide">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-9">
-                    <div id="choose" class="card">
-                        <div class="card-body">
-                            <div class="question-num mb-4">
-                                <p>Number of Questions:</p>
-                                <select type="text" id="questionAmount" class="form-control">
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                </select>
-                            </div>
-                            <div class="difficulty mb-4">
-                                <p>Difficulty:</p>
-                                <select type="text" id="difficulty" class="form-control">
-                                    <option value="">Any</option>
-                                    <option value="easy">easy</option>
-                                    <option value="medium">medium</option>
-                                    <option value="hard">hard</option>
-                                </select>
-                            </div>
-                            <div class="category mb-4">
-                                <p>Categories:</p>
-                                <select type="text" id="category" class="form-control">
-                                    <option value="">Any</option>
-                                    <option value="9">General knowledge</option>
-                                    <option value="10">Books</option>
-                                    <option value="11">Film</option>
-                                    <option value="12">Music</option>
-                                    <option value="13">Musicals and Theatre</option>
-                                    <option value="14">TV</option>
-                                    <option value="15">Video Games</option>
-                                    <option value="16">Board Games</option>
-                                    <option value="17">Science and Nature</option>
-                                    <option value="18">Computers</option>
-                                    <option value="19">Math</option>
-                                    <option value="20">Mythology</option>
-                                    <option value="21">Sports</option>
-                                    <option value="22">Geography</option>
-                                    <option value="23">History</option>
-                                    <option value="24">Politics</option>
-                                    <option value="25">Art</option>
-                                    <option value="26">Celebrities</option>
-                                    <option value="27">Animals</option>
-                                    <option value="28">Vehicles</option>
-                                    <option value="29">Comic Books</option>
-                                    <option value="30">Gadgets</option>
-                                    <option value="31">Anime</option>
-                                    <option value="32">Cartoons and Animation</option>
-                                </select>
-                            </div>
-                            <div id="start-game" class="btn-lg">
-                                <button type="button" class="btn new-game">PLAY</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 return">
-                        <button type="button" class="btn-lg new-user">Select new user</button>
-                        <button type="button" class="btn-lg view-history">View History</button>
-                    </div>
-                </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="image hidden-mobile">
+              <img src="./assets/images/question.jpg" id="question-image" alt="????">
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
-    <div id="history" class="hide">
-        <div class="wrapper col-sm-12">
-            <h1 id="history_header">Last Records:</h1>
-            <ul id="past_records"></ul>
-            <button type="button" class="btn new-user">Select new user</button>
-            <button type="button" class="btn view-setup">Setup game</button>
-        </div>
+    <!-- Page to select options and start a new game -->
+    <div id="setup-screen">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-custom">
+              <div class="card-body">
+                <div class="question-num mb-4">
+                  <p>Number of Questions:</p>
+                  <select type="text" id="questionAmount" class="form-control">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                  </select>
+                </div>
+                <div class="difficulty mb-4">
+                  <p>Difficulty:</p>
+                  <select type="text" id="difficulty" class="form-control">
+                    <option value="">Any</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                  </select>
+                </div>
+                <div class="category mb-4">
+                  <p>Categories:</p>
+                  <select type="text" id="category" class="form-control">
+                    <option value="">Any</option>
+                    <option value="27">Animals</option>
+                    <option value="31">Anime</option>
+                    <option value="25">Art</option>
+                    <option value="16">Board Games</option>
+                    <option value="10">Books</option>
+                    <option value="32">Cartoons and Animation</option>
+                    <option value="26">Celebrities</option>
+                    <option value="29">Comic Books</option>
+                    <option value="18">Computers</option>
+                    <option value="11">Film</option>
+                    <option value="30">Gadgets</option>
+                    <option value="9">General knowledge</option>
+                    <option value="22">Geography</option>
+                    <option value="23">History</option>
+                    <option value="19">Math</option>
+                    <option value="12">Music</option>
+                    <option value="13">Musicals and Theatre</option>
+                    <option value="20">Mythology</option>
+                    <option value="24">Politics</option>
+                    <option value="17">Science and Nature</option>
+                    <option value="21">Sports</option>
+                    <option value="14">TV</option>
+                    <option value="28">Vehicles</option>
+                    <option value="15">Video Games</option>
+                  </select>
+                </div>
+                <div id="invalid-options" class="mb-3 hide"><em>Invalid option combination</em></div>
+                <div>
+                  <button type="button" id="start-game" class="btn-lg new-game">PLAY</button>
+                </div>
+              </div>
+            </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.3/dayjs.min.js"
-            integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
-            crossorigin="anonymous">
-            </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="assets/js/script.js"></script>
+            <div class="col-12 return">
+              <button type="button" class="btn-lg new-user">Select New User</button>
+              <button type="button" class="btn-lg view-history">View History</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Page where the actual gameplay occurs -->
+    <div id="game-screen">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="card card-custom mb-3">
+              <div class="card-body">
+                <div id="qa-container">
+                  <div id="question-display" class="mb-2"></div>
+                  <div id="answer-display"></div>
+                  <div id="answer-response" class="mb-2 hide"></div>
+                  <div id="game-over" class="mb-2 hide"></div>
+                  <button id="next-button" class="btn-block game-btn hide">Next Question</button>
+                  <button id="end-game" class="btn-block game-btn hide">End Game</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="card card-custom">
+              <div class="card-body">
+                <div id="bot-chat">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page that displays a user's previous games -->
+    <div id="history-screen">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 id="history_header">Previous Games:</h2>
+            <div class="card card-custom">
+              <div class="card-body">
+                <div id="past_records"></div>
+              </div>
+            </div>
+            <div class="col-12 return">
+              <button type="button" class="btn-lg new-user">Select New User</button>
+              <button type="button" class="btn-lg view-setup">Setup Game</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.3/dayjs.min.js"
+    integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
+    crossorigin="anonymous">
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  </div>
 </body>
 
 </html>
