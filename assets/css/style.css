@@ -1,9 +1,19 @@
-.header {    
-    padding: 15px;
+body {
     background-color: #764c3c;
     background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23f4ecec' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-
 }
+
+/* Utility class to hide/display sections */
+.hide {
+    display: none;
+}
+
+/* Headers */
+.header {    
+    padding: 15px;
+    cursor: pointer;
+}
+
 h1 {
     color:#053225;
     text-align: center;
@@ -12,20 +22,15 @@ h1 {
     text-shadow: 4px 4px 7px #074433;
 }
 
-.hide {
-    display: none;
-}
-
 #history_header {    
     text-align: center;
-    background-color: #764c3c;
-    background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23f4ecec' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     color:#053225;
     font-size: 40px;
     font-weight: bold;
     text-shadow: 3px 3px 5px #074433;
 }
 
+/* Input field for user name */
 .user_input {
     margin-top: 30px;
     margin-bottom: 5px;
@@ -35,66 +40,115 @@ h1 {
     padding: 5px;
 }
 
+.user-avatar {
+    cursor:pointer;
+}
+
 .image {
-    margin-top: 30px;
     margin-bottom: 30px;
+    border-radius: 20px;
 }
 
-.start-screen,
-#history {
-    background-color: #764c3c;
-    background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23f4ecec' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+/* Customization of content cards */
+.card-custom {
+    background-color: #F7EBE8;
 }
 
-#button-addon2 {
+/* Container for navigation buttons */
+.return {
+    margin-top: 30px;
+    padding: 15px;
+}
+
+/* Buttons */
+.new-user,
+.view-history,
+.view-setup,
+.new-user:hover,
+.view-history:hover,
+.view-setup:hover {
+    background-color: #8fb339;
+    color:  #074433;
+}
+
+.new-game,
+.new-game:hover  {
+    background-color:  #fe5f55;
+    color:  #074433;
+}
+
+#create-user {
     background-color: #fe5f55;
     color: #F7EBE8;
     border-radius: 10px;
 }
 
-#setup-screen {
-    padding-top: 30px;
-    background-color: #764c3c;
-    background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23f4ecec' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+.game-btn {
+    background-color: #5e68c2;
+    color: #F7EBE8;
+    border-radius: 10px;
 }
 
-#choose {
-    margin-top: 30px;
-    background-color: #F7EBE8;
+/* Card sizing for user selection */
+#user-container {
+    min-height: 700px;
 }
 
-.return {
-    margin-top: 30px;
-    padding: 15px;
+#question-image {
+    height: 700px;
+}
+
+/* Card sizing for game section */
+#qa-container,
+#bot-chat {
+   min-height: 400px;
+}
+
+/* Styling for opponent answers */
+.bot-avatar {
+    height: 75px;
+}
+
+.bot-answer {
+    border-radius: 15px;
+    border: 1px solid gray;
+    background-color: lightgray;
+    margin-bottom: 10px;
+}
+
+.bot-answer-text {
+    display: flex;
+    align-items: center;
+}
+
+/* Each item in the history display */
+.history-item {
+    border-radius: 8px;
+    border: 1px solid gray;
+    padding: 2px;
+    background-color: white;
+}
+
+@media (max-width: 1200px) {
+    #user-container {
+        min-height: 500px;
+    }
     
-}
-
-.new-user,
-.view-history,
-.view-setup {
-    background-color: #8fb339;
-    color:  #074433;
-}
-
-.new-user:hover,
-.view-history:hover,
-.view-setup:hover {
-    background-color:  #8fb339;
-    color:  #074433;
-}
-
-.new-game {
-    background-color:  #fe5f55;
-    color:  #074433;
-}
-
-.new-game:hover {
-    background-color:  #ff7f76;
-    color:  #074433;
+    #question-image {
+        height: 500px;
+    }
 }
 
 @media (max-width: 767px) {
-  .hidden-mobile {
-    display: none;
-  }
+    h1 {
+        font-size: 60px;
+    }
+
+    #qa-container {
+        min-height: 250px;
+    }
+
+    .hidden-mobile {
+        display: none;
+    }
 }
