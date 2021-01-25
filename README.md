@@ -2,9 +2,9 @@
 
 ![GitHub Commits](https://img.shields.io/github/commit-activity/w/malenchite/trivia-trainer)
 ![Code Size](https://img.shields.io/github/languages/code-size/malenchite/trivia-trainer)
-![Image of HTML badge](https://img.shields.io/badge/HTML-31%25-orange) 
-![Image of CSS badge](https://img.shields.io/badge/CSS-10.9%25-purple)
-![Image of JavaScript badge](https://img.shields.io/badge/JavaScript-58.1%25-yellow)
+![Image of HTML badge](https://img.shields.io/badge/HTML-32%25-orange) 
+![Image of CSS badge](https://img.shields.io/badge/CSS-11.1%25-purple)
+![Image of JavaScript badge](https://img.shields.io/badge/JavaScript-56.9%25-yellow)
 
 
 The trivia trainer is a website that allows you to train against several opponents to better yourself at trivia. It allows you to select your own username and choose several options, such as difficulty and category.
